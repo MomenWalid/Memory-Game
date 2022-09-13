@@ -156,7 +156,7 @@ function winGame(selectedBlock) {
 
         clearInterval(timer);
 
-        document.querySelector(".timer").innerHTML = "Winer";
+        document.querySelector(".timer").innerHTML = "Winner";
         document.querySelector(".timer").style.color = "#009688";
 
         Swal.fire("Good job!", "You Do It", "success");
