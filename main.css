@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+.buttons {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(3, 169, 244, 0.9);
+}
+
+.buttons span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F44336;
+    color: #FFF;
+    padding: 15px 20px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.info-container {
+    width: 1080px;
+    margin: 20px auto 0;
+    background-color: #f6f6f6;
+    padding: 20px;
+    font-size: 24px;
+    overflow: hidden;
+    border: 2px solid #2196f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-container .name {
+    flex: 1;
+}
+
+.info-container .time {
+    flex: 1;
+    text-align: center;
+}
+
+.info-container .tries {
+    flex: 1;
+    text-align: right;
+}
+
+.game-container {
+    display: flex;
+    width: 1100px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.game-container.no-clicking {
+    pointer-events: none;
+}
+
+.game-container .game-block {
+    height: 200px;
+    transition: transform .5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    flex: 1 0 200px;
+    margin: 0 10px 20px;
+}
+
+.game-container .game-block.flipped,
+.game-container .game-block.match {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.game-container .game-block .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    backface-visibility: hidden;
+    border: 5px solid #2196f3;
+    user-select: none;
+}
+
+.game-container .game-block .front {
+    background-color: #333;
+    line-height: 200px;
+}
+
+.game-container .game-block .front::before {
+    content: '?';
+    color: #FFF;
+    font-size: 140px;
+    font-weight: bold;
+}
+
+.game-container .game-block .back {
+    background-color: #60708B;
+    transform: rotateY(180deg);
+}
+
+.game-container .game-block .back img {
+    width: 140px;
+    height: 140px;
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    .buttons span {
+        font-size: 20px;
+    }
+    .info-container {
+        width: 350px;
+    }
+    .info-container .name,
+    .info-container .tries,
+    .info-container .timer {
+        font-size: 14px;
+    }
+    .game-container {
+        width: 350px;
+    }
+    .game-container .game-block {
+        height: 70px;
+        flex: 1 0 70px;
+        margin: 0 8px 10px;
+    }
+    .game-container .game-block .front {
+        line-height: 70px;
+    }
+    .game-container .game-block .front::before {
+        font-size: 50px;
+    }
+    .game-container .game-block .back img {
+        width: 50px;
+        height: 50px;
+        margin-top: 7px;
+    }
+}

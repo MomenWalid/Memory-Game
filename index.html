@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="buttons">
+        <span>Start Game</span>
+    </div>
+
+    <div class="info-container">
+        <div class="name">
+            Hello : <span></span>
+        </div>
+        <div class="timer">
+            <span class="seconds"></span>
+        </div>
+        <div class="tries">
+            Wrong Tries : <span>0</span>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-block" data-team="acmilan">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/acmilan.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="acmilan">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/acmilan.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="ajax">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Ajax.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="ajax">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Ajax.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="barcelona">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Barcelona.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="barcelona">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Barcelona.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="bayern">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Bayern_München.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="bayern">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Bayern_München.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="broussia">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Borussia_Dortmund.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="broussia">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Borussia_Dortmund.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="chelsea">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/chelsea.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="chelsea">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/chelsea.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="leicester">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Leicester_City.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="leicester">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Leicester_City.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="city">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Manchester_City.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="city">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Manchester_City.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="united">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Manchester_United.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="united">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/Manchester_United.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="paris">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/paris-saint-germain.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-team="paris">
+            <div class="front face"></div>
+            <div class="back face">
+                <img src="imgs/paris-saint-germain.png" alt="">
+            </div>
+        </div>
+    </div>
+
+
+
+    <audio id="success" src="audio/success.wav" preload="auto"></audio>
+    <audio id="fail" src="audio/fail.mp3" preload="auto"></audio>
+    <audio src="audio/start.wav" preload="auto" id="start"></audio>
+    <audio src="audio/win.wav" preload="auto" id="win"></audio>
+    <audio src="audio/lose.wav" preload="auto" id="lose"></audio>
+
+
+    <script src="main.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
