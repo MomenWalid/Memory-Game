@@ -1,48 +1,174 @@
-document.querySelector(".buttons span").onclick = function() {
-    let yourName = prompt("Whats Your Name ?");
-
-    if (yourName == null || yourName == "") {
-        document.querySelector(".name span").innerHTML = "Unknown";
-        rotate();
-    } else {
-        document.querySelector(".name span").innerHTML = yourName;
-        rotate();
-        document.getElementById("start").play();
-    }
-
-    document.querySelector(".buttons").remove();
-
-    if (true) {
-        setTimeout(function() {
-            let pic = document.querySelectorAll(".game-block .back");
-
-            pic.forEach((e) => {
-                e.style.transform = "rotateY(180deg)";
-            });
-        }, 4000);
-    }
-    time();
-};
+let gameContainer = document.querySelector(".game-container");
 
 let duration = 1000;
-
-let gameContainer = document.querySelector(".game-container");
 
 let blocks = Array.from(gameContainer.children);
 
 let orderRange = [...Array(blocks.length).keys()];
 
-shuffle(orderRange);
+let imgname;
 
-blocks.forEach((block, index) => {
-    block.style.order = orderRange[index];
+// Select Game Mode
 
-    block.addEventListener("click", function() {
-        flipBlock(block);
-
-        winGame(block);
+document.querySelectorAll(".mode span").forEach((span) => {
+    span.addEventListener("click", (e) => {
+        imgname = e.target.className;
+        document.querySelector(".mode").remove();
     });
 });
+
+document.addEventListener("click", (e) => {
+    //    select Game Level
+
+    if (e.target.className == "easy") {
+        e.target.style.backgroundColor = "#009688";
+        document.querySelector(".buttons .hard").style.backgroundColor = "#F44336";
+        document.querySelector(".buttons .normal").style.backgroundColor =
+            "#F44336";
+        document.querySelector(".levels").style.pointerEvents = "none";
+
+        gameLevel(9, imgname);
+
+        startGame();
+
+        console.log(e.target);
+    } else if (e.target.className == "normal") {
+        e.target.style.backgroundColor = "#009688";
+
+        document.querySelector(".buttons .hard").style.backgroundColor = "#F44336";
+        document.querySelector(".buttons .easy").style.backgroundColor = "#F44336";
+        document.querySelector(".levels").style.pointerEvents = "none";
+        gameLevel(12, imgname);
+
+        startGame();
+    } else if (e.target.className == "hard") {
+        e.target.style.backgroundColor = "#009688";
+
+        document.querySelector(".buttons .easy").style.backgroundColor = "#F44336";
+        document.querySelector(".buttons .normal").style.backgroundColor =
+            "#F44336";
+        document.querySelector(".levels").style.pointerEvents = "none";
+        gameLevel(15, imgname);
+
+        startGame();
+    }
+});
+
+function gameLevel(e, imgname) {
+    for (let i = 1; i <= e; i++) {
+        let divBlock1 = document.createElement("div");
+        divBlock1.className = "game-block";
+        divBlock1.setAttribute("data-pic", `pic-${i}`);
+
+        let divFront1 = document.createElement("div");
+        divFront1.className = "front face";
+
+        let divBack1 = document.createElement("div");
+        divBack1.className = "back face";
+
+        let img1 = document.createElement("img");
+        img1.src = `${imgname}/pic-${i}.png`;
+
+        divBack1.appendChild(img1);
+
+        divBlock1.appendChild(divFront1);
+
+        divBlock1.appendChild(divBack1);
+
+        gameContainer.appendChild(divBlock1);
+
+        let divBlock2 = document.createElement("div");
+        divBlock2.className = "game-block";
+        divBlock2.setAttribute("data-pic", `pic-${i}`);
+
+        let divFront2 = document.createElement("div");
+        divFront2.className = "front face";
+
+        let divBack2 = document.createElement("div");
+        divBack2.className = "back face";
+
+        let img2 = document.createElement("img");
+        img2.src = `${imgname}/pic-${i}.png`;
+
+        divBack2.appendChild(img2);
+
+        divBlock2.appendChild(divFront2);
+
+        divBlock2.appendChild(divBack2);
+
+        gameContainer.appendChild(divBlock2);
+    }
+}
+
+function startGame() {
+    document.querySelector(".buttons .start").onclick = function() {
+        let yourName = prompt("Whats Your Name ?");
+
+        if (yourName == null || yourName == "") {
+            document.querySelector(".name span").innerHTML = "Unknown";
+            rotate();
+        } else {
+            document.querySelector(".name span").innerHTML = yourName;
+            rotate();
+            document.getElementById("start").play();
+        }
+
+        document.querySelector(".buttons").remove();
+
+        if (true) {
+            setTimeout(function() {
+                let pic = document.querySelectorAll(".game-block .back");
+
+                pic.forEach((e) => {
+                    e.style.transform = "rotateY(180deg)";
+                });
+            }, 4000);
+        }
+        time();
+    };
+
+    // Update The Values
+
+    gameContainer = document.querySelector(".game-container");
+
+    blocks = Array.from(gameContainer.children);
+
+    orderRange = [...Array(blocks.length).keys()];
+
+    // //////////////////////////////////
+
+    shuffle(orderRange);
+
+    blocks.forEach((block, index) => {
+        block.style.order = orderRange[index];
+
+        block.addEventListener("click", function() {
+            flipBlock(block);
+
+            winGame(block);
+        });
+    });
+}
+
+// let duration = 1000;
+
+// // let gameContainer = document.querySelector(".game-container");
+
+// let blocks = Array.from(gameContainer.children);
+
+// let orderRange = [...Array(blocks.length).keys()];
+
+// shuffle(orderRange);
+
+// blocks.forEach((block, index) => {
+//     block.style.order = orderRange[index];
+
+//     block.addEventListener("click", function() {
+//         flipBlock(block);
+
+//         winGame(block);
+//     });
+// });
 
 function flipBlock(selectedBlock) {
     selectedBlock.classList.add("flipped");
@@ -69,7 +195,7 @@ function stopClicking() {
 function checkMatchedBlocks(firstBlock, secondBlock) {
     let triesElment = document.querySelector(".tries span");
 
-    if (firstBlock.dataset.team === secondBlock.dataset.team) {
+    if (firstBlock.dataset.pic === secondBlock.dataset.pic) {
         firstBlock.classList.remove("flipped");
         secondBlock.classList.remove("flipped");
 
@@ -132,7 +258,7 @@ function time() {
 
     seconds.innerHTML = "64";
 
-    timer = setInterval(function time() {
+    timer = setInterval(function() {
         seconds.innerHTML--;
         seconds.innerHTML =
             seconds.innerHTML < 10 ? `0${seconds.innerHTML}` : seconds.innerHTML;
@@ -151,7 +277,7 @@ function winGame(selectedBlock) {
         finish.classList.contains("match")
     );
 
-    if (finishGame.length === 20) {
+    if (finishGame.length == blocks.length) {
         document.getElementById("win").play();
 
         clearInterval(timer);
@@ -189,7 +315,6 @@ function loseGame() {
         }
 
         Swal.fire("Game Over", "Try It Again Later", "error");
-
         newGame();
     });
 
