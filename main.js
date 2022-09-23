@@ -10,8 +10,8 @@ let imgname;
 
 // Select Game Mode
 
-document.querySelectorAll(".mode span").forEach((span) => {
-    span.addEventListener("click", (e) => {
+document.querySelectorAll(".mode li").forEach((li) => {
+    li.addEventListener("click", (e) => {
         imgname = e.target.className;
         document.querySelector(".mode").remove();
     });
@@ -21,33 +21,40 @@ document.addEventListener("click", (e) => {
     //    select Game Level
 
     if (e.target.className == "easy") {
+        blocks.forEach((e) => {
+            e.remove();
+        });
+
         e.target.style.backgroundColor = "#009688";
         document.querySelector(".buttons .hard").style.backgroundColor = "#F44336";
         document.querySelector(".buttons .normal").style.backgroundColor =
             "#F44336";
-        document.querySelector(".levels").style.pointerEvents = "none";
 
         gameLevel(9, imgname);
 
         startGame();
-
-        console.log(e.target);
     } else if (e.target.className == "normal") {
+        blocks.forEach((e) => {
+            e.remove();
+        });
+
         e.target.style.backgroundColor = "#009688";
 
         document.querySelector(".buttons .hard").style.backgroundColor = "#F44336";
         document.querySelector(".buttons .easy").style.backgroundColor = "#F44336";
-        document.querySelector(".levels").style.pointerEvents = "none";
         gameLevel(12, imgname);
 
         startGame();
     } else if (e.target.className == "hard") {
+        blocks.forEach((e) => {
+            e.remove();
+        });
+
         e.target.style.backgroundColor = "#009688";
 
         document.querySelector(".buttons .easy").style.backgroundColor = "#F44336";
         document.querySelector(".buttons .normal").style.backgroundColor =
             "#F44336";
-        document.querySelector(".levels").style.pointerEvents = "none";
         gameLevel(15, imgname);
 
         startGame();
@@ -149,26 +156,6 @@ function startGame() {
         });
     });
 }
-
-// let duration = 1000;
-
-// // let gameContainer = document.querySelector(".game-container");
-
-// let blocks = Array.from(gameContainer.children);
-
-// let orderRange = [...Array(blocks.length).keys()];
-
-// shuffle(orderRange);
-
-// blocks.forEach((block, index) => {
-//     block.style.order = orderRange[index];
-
-//     block.addEventListener("click", function() {
-//         flipBlock(block);
-
-//         winGame(block);
-//     });
-// });
 
 function flipBlock(selectedBlock) {
     selectedBlock.classList.add("flipped");
@@ -285,9 +272,9 @@ function winGame(selectedBlock) {
         document.querySelector(".timer").innerHTML = "Winer";
         document.querySelector(".timer").style.color = "#009688";
 
-        Swal.fire("Good job!", "You Do It", "success");
-
         newGame();
+
+        Swal.fire("Good job!", "You Do It", "success");
     }
 }
 
@@ -314,8 +301,9 @@ function loseGame() {
             e.style.backgroundColor = "#e91e63";
         }
 
-        Swal.fire("Game Over", "Try It Again Later", "error");
         newGame();
+
+        Swal.fire("Game Over", "Try It Again Later", "error");
     });
 
     gameContainer.classList.add("no-clicking");

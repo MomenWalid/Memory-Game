@@ -34,6 +34,37 @@ body {
     gap: 70px;
 }
 
+.mode ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.mode ul li {
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 30px;
+    user-select: none;
+    text-align: center;
+    color: rgba(3, 169, 244, 0.98);
+    cursor: pointer;
+}
+
+.mode ul p {
+    margin: 0 0 15px;
+}
+
+.mode ul li img {
+    width: 150px;
+    height: 100px;
+}
+
 .mode span {
     padding: 10px 30px;
     background-color: #fff;
@@ -202,17 +233,18 @@ body {
 }
 
 @media (max-width: 767px) {
-    .mode .container {
-        gap: 15px;
-    }
     .mode h1 {
         font-size: 25px;
     }
-    .mode span {
+    .mode ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .mode ul li {
         font-size: 25px;
         padding: 7px 30px;
     }
-    .mode span img {
+    .mode ul li img {
         height: 50px;
     }
     .buttons .container {
