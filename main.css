@@ -21,7 +21,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
 }
 
 .mode h1 {
@@ -30,7 +29,7 @@ body {
 
 .mode .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     width: 90%;
     gap: 70px;
 }
@@ -203,9 +202,6 @@ body {
 }
 
 @media (max-width: 767px) {
-    .mode {
-        gap: 25px;
-    }
     .mode .container {
         gap: 15px;
     }
@@ -214,9 +210,10 @@ body {
     }
     .mode span {
         font-size: 25px;
+        padding: 7px 30px;
     }
     .mode span img {
-        height: 60px;
+        height: 50px;
     }
     .buttons .container {
         width: 90%;
