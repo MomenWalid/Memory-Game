@@ -8,6 +8,53 @@ body {
     font-family: Arial, Tahoma, sans-serif;
 }
 
+.mode {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(3, 169, 244, 0.98);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.mode h1 {
+    font-size: 45px;
+}
+
+.mode .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    width: 90%;
+    gap: 70px;
+}
+
+.mode span {
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    color: rgba(3, 169, 244, 0.98);
+}
+
+.mode span p {
+    margin: 0 0 10px;
+}
+
+.mode span img {
+    width: 150px;
+    height: 100px;
+}
+
 .buttons {
     position: fixed;
     left: 0;
@@ -18,11 +65,47 @@ body {
     background-color: rgba(3, 169, 244, 0.9);
 }
 
-.buttons span {
+.buttons .container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+}
+
+.buttons h1 {
+    color: #FFF;
+    text-align: center;
+    font-size: 45px;
+}
+
+.buttons .levels {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons .levels span {
+    background-color: #F44336;
+    color: #FFF;
+    padding: 15px 20px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.buttons .start {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
     background-color: #F44336;
     color: #FFF;
     padding: 15px 20px;
@@ -71,12 +154,12 @@ body {
 }
 
 .game-container .game-block {
-    height: 200px;
+    height: 150px;
     transition: transform .5s;
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
-    flex: 1 0 200px;
+    flex: 1 0 150px;
     margin: 0 10px 20px;
 }
 
@@ -98,13 +181,13 @@ body {
 
 .game-container .game-block .front {
     background-color: #333;
-    line-height: 200px;
+    line-height: 150px;
 }
 
 .game-container .game-block .front::before {
     content: '?';
     color: #FFF;
-    font-size: 140px;
+    font-size: 100px;
     font-weight: bold;
 }
 
@@ -114,13 +197,38 @@ body {
 }
 
 .game-container .game-block .back img {
-    width: 140px;
-    height: 140px;
-    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
 }
 
 @media (max-width: 767px) {
-    .buttons span {
+    .mode {
+        gap: 25px;
+    }
+    .mode .container {
+        gap: 15px;
+    }
+    .mode h1 {
+        font-size: 25px;
+    }
+    .mode span {
+        font-size: 25px;
+    }
+    .mode span img {
+        height: 60px;
+    }
+    .buttons .container {
+        width: 90%;
+        height: 80%;
+    }
+    .buttons h1 {
+        font-size: 25px;
+    }
+    .buttons .levels span {
+        font-size: 20px;
+    }
+    .buttons .start {
         font-size: 20px;
     }
     .info-container {
